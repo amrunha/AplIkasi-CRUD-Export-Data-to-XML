@@ -36,25 +36,7 @@ namespace CRUD_dan_Export_ke_XML
             MessageBox.Show("Berhasil");
             this.Close();
         }
-
-       /* void FormTambahDataLoad(object sender, EventArgs e)
-        {
-            if (status == "tambah")
-            {
-                button1.Visible = true;
-                button2.Visible = false;
-            }
-            else
-            {
-                button1.Visible = false;
-                button2.Visible = true;
-                noID.Text = n_id.ToString();
-                nama.Text = nma;
-                ttl.Text = tt_l;
-                agama.Text = agm;
-                pekerjaan.Text = pkerjaan;
-            }
-        }*/
+ 
 
         private void button2_Click(object sender, EventArgs e) // Tombol Update
         {
