@@ -1,66 +1,87 @@
- 
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
-
-namespace ExportDataToXML
+namespace CRUD_dan_Export_ke_XML
 {
-	/// <summary>
-	/// Description of frmTambahData.
-	/// </summary>
-	public partial class frmTambahData : Form
-	{
-		public DataTable tabel;
-		public string status="";
-		public int n_induk;
-		public string nama,lhr,almt,pwd;
-		public frmTambahData()
-		{
-			InitializeComponent();
-		}
-		
-		void NoIndukTextChanged(object sender, EventArgs e)
-		{
-			try {
-				int induk = Convert.ToInt32(noInduk.Text.ToString());
-			} catch (Exception) {
-				MessageBox.Show("Input harus angka");
-				noInduk.Text="";
-			}
-		}
-		
-		void Button3Click(object sender, EventArgs e) //Tombol Tambah data
-		{
-			isiData isi = new isiData();
-			tabel = isi.tambahData(Convert.ToInt32(noInduk.Text.ToString()),namaSiswa.Text.ToString(),keLahiran.Text.ToString(),aLamat.Text.ToString(),passWord.Text.ToString());
-			MessageBox.Show("Berhasil");
-			this.Close();
-		}
-		
-		void FrmTambahDataLoad(object sender, EventArgs e)
-		{
-			if (status=="tambah") {
-				button3.Visible=true;
-				button1.Visible=false;
-			}
-			else{
-				button3.Visible=false;
-				button1.Visible=true;
-				noInduk.Text=n_induk.ToString();
-				namaSiswa.Text=nama;
-				keLahiran.Text=lhr;
-				aLamat.Text=almt;
-				passWord.Text=pwd;
-			}
-		}
-		
-		void Button1Click(object sender, EventArgs e) //Tombol update data
-		{
-			isiData isi = new isiData();
-			tabel = isi.updateData(Convert.ToInt32(noInduk.Text.ToString()),namaSiswa.Text.ToString(),keLahiran.Text.ToString(),aLamat.Text.ToString(),passWord.Text.ToString());
-			MessageBox.Show("Berhasil");
-			this.Close();
-		}
-	}
+    public partial class FormTambahData : Form
+    {
+        public DataTable tabel;
+        public string status = "";
+        public int n_id;
+        public string nma, tt_l, agm, pkerjaan;
+
+        public FormTambahData()
+        {
+            InitializeComponent();
+        }
+
+        void NoIDTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(noID.Text.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Input harus angka");
+                noID.Text = "";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e) //Tombol tambah data
+        {
+            isiData isi = new isiData();
+            tabel = isi.tambahData(Convert.ToInt32(noID.Text.ToString()), nama.Text.ToString(), ttl.Text.ToString(), agama.Text.ToString(), pekerjaan.Text.ToString());
+            MessageBox.Show("Berhasil");
+            this.Close();
+        }
+
+       /* void FormTambahDataLoad(object sender, EventArgs e)
+        {
+            if (status == "tambah")
+            {
+                button1.Visible = true;
+                button2.Visible = false;
+            }
+            else
+            {
+                button1.Visible = false;
+                button2.Visible = true;
+                noID.Text = n_id.ToString();
+                nama.Text = nma;
+                ttl.Text = tt_l;
+                agama.Text = agm;
+                pekerjaan.Text = pkerjaan;
+            }
+        }*/
+
+        private void button2_Click(object sender, EventArgs e) // Tombol Update
+        {
+            isiData isi = new isiData();
+            tabel = isi.updateData(Convert.ToInt32(noID.Text.ToString()), nama.Text.ToString(), ttl.Text.ToString(), agama.Text.ToString(), pekerjaan.Text.ToString());
+            MessageBox.Show("Berhasil");
+            this.Close();
+        }
+
+        private void FormTambahData_Load(object sender, EventArgs e)
+        {
+            if (status == "tambah")
+            {
+                button1.Visible = true;
+                button2.Visible = false;
+            }
+            else
+            {
+                button1.Visible = false;
+                button2.Visible = true;
+                noID.Text = n_id.ToString();
+                nama.Text = nma;
+                ttl.Text = tt_l;
+                agama.Text = agm;
+                pekerjaan.Text = pkerjaan;
+            }
+        }
+    }
 }
+ 
